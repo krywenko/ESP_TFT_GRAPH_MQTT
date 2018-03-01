@@ -251,17 +251,20 @@ reading = (inString4.toInt()+200);
     // Test with Sine wave function, normally reading will be from a Mqtt subscriptions
     reading = ((inString4.toInt()));
     p_reading = (inString4b.toInt());
+    p_len = 4; if (p_reading > 999) p_len = 5;
    // xpos = gap + ringMeter(reading, 0, 2000, xpos, ypos, radius, "HP", GREEN2GREEN,sweep,segm,wid,p_value); // Draw analogue meter
     inString4b=inString4;
 
     reading = (inString2.toInt());
-    p_reading = (inString2b.toInt());
+    p_reading = (inString2b.toInt()); 
+     p_len = 4; if (p_reading > 999) p_len = 5;
     //reading = -17;
    // xpos = gap + ringMeter(reading, -40, 50, xpos, ypos, radius, "degC", BLUE2RED,sweep,segm,wid,p_value); // Draw analogue meter
     inString2=inString2;
 
     reading = (inString3.toInt());
     p_reading = (inString3b.toInt());
+    p_len = 4; if (p_reading > 999) p_len = 5;
     //reading = 50;
    //xpos = gap + ringMeter(reading, 0, 100, xpos, ypos, radius, "%RH", BLUE2BLUE, sweep,segm,wid,p_value); // Draw analogue meter
     inString3b=inString3;
@@ -271,18 +274,21 @@ reading = (inString4.toInt()+200);
 
     reading = (inString4.toInt());
     p_reading=(inString4b.toInt());
+    p_len = 4; if (p_reading > 999) p_len = 5;
     xpos = gap + ringMeter(reading, -30, 3000, xpos, ypos, radius, "SOLAR", RED2GREEN, sweep,segm,wid,p_reading); // Draw analogue meter
     inString4b=inString4;
 
     reading = (inString5.toInt());
     p_reading = (inString5b.toInt());
+    p_len = 4; if (p_reading > 999) p_len = 5;
     xpos = gap + ringMeter(reading, -300, 15000, xpos, ypos, radius, "GRID", GREEN2RED,sweep,segm,wid,p_reading); // Draw analogue meter
     inString5b=inString5;
 
     // Draw a large meter
    // xpos = 40, ypos = 5, gap = 15, radius = 120, sweep = 75, segm=2,wid=10;
-    reading = 175;
-    p_reading = (inString5b.toInt());
+    //reading = inString5;
+    //p_reading = (inString5b.toInt()); 
+    //p_len = 4; if (p_reading > 999) p_len = 5;
     // Comment out above meters, then uncomment the next line to show large meter
     //ringMeter(reading,0,200, xpos,ypos,radius," Watts",GREEN2RED,sweep,segm,wid,p_value); // Draw analogue meter
     //inString5b=inString5;
@@ -430,7 +436,7 @@ int ringMeter(int value, int vmin, int vmax, int x, int y, int r, char *units, b
   byte len = 4; if (value > 999) len = 5;
 
   dtostrf(value, len, 0, buf);
-  dtostrf(p_value, len, 0, p_buf);
+  dtostrf(p_value, p_len, 0, p_buf);
   
   // Set the text colour to default
  // tft.setTextColor(ILI9341_WHITE, ILI9341_BLACK);
