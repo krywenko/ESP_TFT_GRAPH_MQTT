@@ -71,7 +71,7 @@ double ox , oy ;
 double ox2 , oy2 ;
 double x, y;
 double a1, b1, c1, d1, r2, r1, vo, tempC, tempF, tempK;
-
+byte p_len =4 ;
 
 int reading = 0; // Value to be displayed - ring meter
 int p_reading =0; // previous value -ring meter
